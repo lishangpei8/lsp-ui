@@ -1,7 +1,7 @@
 /*
  * @Author: lishangpei
  * @Date: 2022-07-05 22:48:06
- * @LastEditTime: 2022-07-14 23:22:30
+ * @LastEditTime: 2022-07-17 01:10:36
  * @LastEditors: your name
  */
 /* eslint-disable */
@@ -25,6 +25,8 @@ module.exports = defineConfig({
                 return options
             })
     },
+    /* eslint-disable */
+    publicPath: './',
 
 
     transpileDependencies: true

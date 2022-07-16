@@ -1,7 +1,7 @@
 <!--
  * @Author: lishangpei
  * @Date: 2022-07-05 22:48:26
- * @LastEditTime: 2022-07-07 22:49:44
+ * @LastEditTime: 2022-07-17 00:11:20
  * @LastEditors: your name
 -->
 # lsp-ui
@@ -82,8 +82,65 @@ Button
    Vue.use(lspUI)
    ```
 
-   
-
 ### 2.将组件封装成npm包进行发布
 
 1.需要在npm上注册一个用户
+
+2.把该项目的package.json 的private字段改为false
+
+这里有一个坑 一些静态文件如果希望打包的时候不想变成绝对路径，如字体图标文件，打包后不能是绝对路径，需要在
+
+vue.config.js中设置 publicPath:'./'
+
+3.需要把包打包成库格式，vue-cli已经支持把包打成库的格式，需要在package.json的script加上如下打包成库格式的命令
+
+```
+  //  最后一段是目录      
+"lib":"vue-cli-service build --target lib ./package/index.js"
+```
+
+执行npm run lib就会在dist下输出对应的库文件
+
+4.在package.json 指定未来他人使用这个包的时候要去找的入口文件,需要配置main字段
+
+```
+    "main": "dist/lisp-ui.umd.min.js",
+```
+
+5.配置npm上传的时候需要忽略的文件功能类似于.gitignore,新建一个.npmignore，里面的内容,不需要把这些上传
+
+```
+package/
+public/
+example/
+node_modules/
+vue.config.js
+bable.config.js
+*.map
+```
+
+6.首先确认npm用的源是npm官方的源，不是淘宝什么的源，然后用npm login登录一下npm,最后在项目目录下进行发布npm publish就可以了
+
+7.在其他项目中进行使用,
+
+```shell
+npm install -S lisp-ui
+```
+
+
+
+在main.js中注册
+
+```js
+import lspUi from 'lisp-ui';
+import 'lisp-ui/dist/lisp-ui.css'
+Vue.use(lspUi)
+```
+
+在项目中使用
+
+```vue
+    <lsp-button type="primary">111</lsp-button>
+    <lsp-switch v-model="active"></lsp-switch>
+```
+
