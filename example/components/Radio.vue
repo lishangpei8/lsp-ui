@@ -1,12 +1,12 @@
 <!--
  * @Author: lishangpei
  * @Date: 2022-07-17 11:21:43
- * @LastEditTime: 2022-07-17 11:54:57
+ * @LastEditTime: 2022-07-17 14:07:01
  * @LastEditors: your name
 -->
 <template>
   <div>
-    <label class="hm-checkbox" :class="{'is-checked': label === value}">
+    <label class="hm-checkbox" :class="{'is-checked': label === radioModel}">
       <span class="hm-checkbox__input">
         <span class="hm-checkbox__inner"></span>
         <input
@@ -38,15 +38,24 @@ export default {
       default: ''
     }
   },
+  inject: {
+    radioGroup: { default: '' }
+  },
   computed: {
     // 因为无法直接改变父组件传递的value值，所以这里用一个radioModel作为中建媒介
     radioModel: {
       get () {
-        return this.value
+        return this.isGroup ? this.radioGroup.value : this.value
       },
       set (val) {
-        this.$emit('input', val)
+        this.isGroup
+          ? this.radioGroup.$emit('input', val)
+          : this.$emit('input', val)
       }
+    },
+    isGroup () {
+      // 用两个感叹号可以变成布尔值
+      return !!this.radioGroup
     }
   }
 }

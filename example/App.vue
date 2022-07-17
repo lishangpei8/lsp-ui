@@ -1,7 +1,7 @@
 <!--
  * @Author: lishangpei
  * @Date: 2022-07-05 22:48:06
- * @LastEditTime: 2022-07-17 11:35:46
+ * @LastEditTime: 2022-07-17 14:01:57
  * @LastEditors: your name
 -->
 <template>
@@ -70,6 +70,10 @@
     ></lsp-switch> -->
     <lsp-radio label="1" v-model="gender"></lsp-radio>
     <lsp-radio label="2" v-model="gender">女</lsp-radio>
+    <lsp-radio-group v-model="gender">
+      <lsp-radio label="1">男</lsp-radio>
+      <lsp-radio label="2">女</lsp-radio>
+    </lsp-radio-group>
   </div>
 </template>
 

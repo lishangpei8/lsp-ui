@@ -12,8 +12,10 @@ import App from './App.vue'
 // Vue.config.productionTip = false
 
 import LspRadio from './components/Radio'
+import LspRadioGroup from './components/RadioGroup'
 import './assets/fonts/iconfont.css'
 Vue.component(LspRadio.name, LspRadio)
+Vue.component(LspRadioGroup.name, LspRadioGroup)
 
 new Vue({
     render: h => h(App)
