@@ -1,7 +1,7 @@
 <!--
  * @Author: lishangpei
  * @Date: 2022-07-05 22:48:06
- * @LastEditTime: 2022-07-17 14:01:57
+ * @LastEditTime: 2022-07-17 14:46:26
  * @LastEditors: your name
 -->
 <template>
@@ -74,6 +74,23 @@
       <lsp-radio label="1">男</lsp-radio>
       <lsp-radio label="2">女</lsp-radio>
     </lsp-radio-group>
+
+    <lsp-form :form="form" label-width="100px">
+      <lsp-form-item label="用户名">
+        <lsp-input
+          placeholder="请输入用户名"
+          v-model="form.username"
+          clearable
+        ></lsp-input>
+      </lsp-form-item>
+
+      <lsp-form-item>
+        <lsp-radio-group v-model="form.gender">
+          <lsp-radio label="1">男</lsp-radio>
+          <lsp-radio label="2">女</lsp-radio>
+        </lsp-radio-group>
+      </lsp-form-item>
+    </lsp-form>
   </div>
 </template>
 
@@ -84,7 +101,11 @@ export default {
       visible: false,
       username: 'lsp',
       active: false,
-      gender: '1'
+      gender: '1',
+      form: {
+        username: 'li',
+        gender: '1'
+      }
     }
   },
   methods: {
