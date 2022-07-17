@@ -1,7 +1,7 @@
 <!--
  * @Author: lishangpei
  * @Date: 2022-07-05 22:48:06
- * @LastEditTime: 2022-07-13 21:05:18
+ * @LastEditTime: 2022-07-17 11:35:46
  * @LastEditors: your name
 -->
 <template>
@@ -36,7 +36,7 @@
       <lsp-button circle icon="delete" type="warning"></lsp-button>
     </div> -->
     <!-- dialog -->
-    <lsp-dialog
+    <!-- <lsp-dialog
       title="温馨提示"
       width="20%"
       top="200px"
@@ -48,26 +48,28 @@
         <lsp-button @click="visible = false">取消</lsp-button>
       </template>
     </lsp-dialog>
-    <lsp-button type="primary" @click="visible = !visible">show</lsp-button>
+    <lsp-button type="primary" @click="visible = !visible">show</lsp-button> -->
     <div class="my-input">
-      <lsp-input
+      <!-- <lsp-input
         placeholder="请输入内容"
         v-model="username"
         clearable
         type="password"
         show-password
-      ></lsp-input>
+      ></lsp-input> -->
       <!-- <input type="text" v-model="username">
       等价于，v-model就是一个语法糖
       <input type="text" :value="username" @input="username=$event.target.value"> -->
     </div>
 
-    <lsp-switch
+    <!-- <lsp-switch
       v-model="active"
       active-color="green"
       inactive-color="red"
       name="username"
-    ></lsp-switch>
+    ></lsp-switch> -->
+    <lsp-radio label="1" v-model="gender"></lsp-radio>
+    <lsp-radio label="2" v-model="gender">女</lsp-radio>
   </div>
 </template>
 
@@ -77,7 +79,8 @@ export default {
     return {
       visible: false,
       username: 'lsp',
-      active: false
+      active: false,
+      gender: '1'
     }
   },
   methods: {
